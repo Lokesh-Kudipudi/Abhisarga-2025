@@ -26,11 +26,11 @@ export const HeroParallax = ({ products }) => {
   };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1500]),
+    useTransform(scrollYProgress, [0, 1], [0, 1000]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1500]),
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
     springConfig
   );
   const rotateX = useSpring(
@@ -49,22 +49,6 @@ export const HeroParallax = ({ products }) => {
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
-
-  // Add opacity effect specifically for images
-  const imageOpacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [0, 1]),
-    springConfig
-  );
-
-  // Enable hover only when images are fully visible
-  const hoverEnabled = useTransform(
-    scrollYProgress,
-    [0.3, 0.5],
-    [0, 1]
-  );
-
-  console.log(hoverEnabled.get());
-
   return (
     <div
       ref={ref}
@@ -84,8 +68,6 @@ export const HeroParallax = ({ products }) => {
             <ProductCard
               product={product}
               translate={translateX}
-              imageOpacity={imageOpacity}
-              hoverEnabled={hoverEnabled}
               key={product.key}
             />
           ))}
@@ -95,8 +77,6 @@ export const HeroParallax = ({ products }) => {
             <ProductCard
               product={product}
               translate={translateXReverse}
-              imageOpacity={imageOpacity}
-              hoverEnabled={hoverEnabled}
               key={product.key}
             />
           ))}
@@ -106,8 +86,6 @@ export const HeroParallax = ({ products }) => {
             <ProductCard
               product={product}
               translate={translateX}
-              imageOpacity={imageOpacity}
-              hoverEnabled={hoverEnabled}
               key={product.key}
             />
           ))}
@@ -150,35 +128,29 @@ export const Header = () => {
   );
 };
 
-export const ProductCard = ({
-  product,
-  translate,
-  imageOpacity,
-  hoverEnabled,
-}) => {
+export const ProductCard = ({ product, translate }) => {
   return (
     <motion.div
       style={{
         x: translate,
       }}
-      whileHover={{ y: -20, opacity: 0.4 }}
+      whileHover={{
+        y: -20,
+      }}
       key={product.title}
-      className="group/product h-[18rem] w-[32rem] md:h-96 md:w-[36rem] relative flex-shrink-0"
+      className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
-      <motion.div
-        style={{ opacity: imageOpacity }}
-        className="absolute h-full w-full inset-0"
-      >
-        <Image
-          src={product.thumbnail}
-          style={{
-            objectFit: "cover",
-          }}
-          fill
-          className="rounded-2xl object-left-top"
-          alt={product.title}
-        />
-      </motion.div>
+      <Image
+        src={product.thumbnail}
+        height="600"
+        width="600"
+        className="object-cover object-left-top absolute h-full w-full inset-0"
+        alt={product.title}
+      />
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
+      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+        {product.title}
+      </h2>
     </motion.div>
   );
 };

@@ -23,8 +23,8 @@ const Home = () => {
             <FloatingDock></FloatingDock>
           </div>
           <Hero products={loadedImages} />
-          <Sponsors></Sponsors>
           <ImageCarousel></ImageCarousel>
+          <Sponsors></Sponsors>
           {/* <Location></Location> */}
         </>
       )}

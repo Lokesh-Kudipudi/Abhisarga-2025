@@ -9,6 +9,12 @@ const nextConfig = {
         pathname:
           "/Lokesh-Kudipudi/Abhisarga-2025-Hero-Section/refs/heads/main/src/assets/heroImages/**",
       },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

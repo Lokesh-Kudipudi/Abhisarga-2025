@@ -1,22 +1,8 @@
-// import React from 'react';
-
-// export default function ProgressBar({ progress }) {
-//   return (
-//     <div className="absolute top-0 left-0 w-full h-1 bg-gray-800 z-50">
-//       <div 
-//         className="h-full bg-orange-500 transition-all duration-75 ease-linear"
-//         style={{ width: `${progress}%` }}
-//       />
-//     </div>
-//   );
-// }
-
-
-import React from 'react';
+import React from "react";
 
 function ProgressBar({ progress }) {
   return (
-    <div 
+    <div
       className="
         absolute  w-full z-50
         transition-all duration-300 ease-linear
@@ -29,7 +15,7 @@ function ProgressBar({ progress }) {
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <div 
+      <div
         className="
           h-full
           transition-all duration-75 ease-linear

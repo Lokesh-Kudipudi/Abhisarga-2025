@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { sponsorsData } from "@/constants/sponsorData";
+import Image from "next/image";
 
 const Sponsors = () => {
   const containerVariants = {
@@ -65,7 +66,7 @@ const Sponsors = () => {
 
         <motion.div
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
         >
           {sponsorsData.map((sponsor) => (
             <motion.div
@@ -79,9 +80,11 @@ const Sponsors = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
-                <img
+                <Image
                   src={sponsor.logo}
                   alt={sponsor.name}
+                  width={"150"}
+                  height={"150"}
                   className="max-h-full max-w-full object-contain"
                 />
               </motion.div>
