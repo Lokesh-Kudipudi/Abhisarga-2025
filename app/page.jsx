@@ -4,7 +4,7 @@ import { usePreloadImages } from "@/constants/heroImages";
 import { FloatingDock } from "@/components/heroSection/Nav";
 import Loader from "@/components/utils/Loader";
 import Sponsors from "@/components/sponsors/Sponsors";
-import Location from "@/components/location/Location";
+// import Location from "@/components/location/Location";
 import ImageCarousel from "@/components/proShows/ImageCarousel";
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
           <Hero products={loadedImages} />
           <Sponsors></Sponsors>
           <ImageCarousel></ImageCarousel>
-          <Location></Location>
+          {/* <Location></Location> */}
         </>
       )}
     </div>
